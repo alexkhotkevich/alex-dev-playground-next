@@ -33,6 +33,7 @@ class MyDocument extends Document<Props> {
           <meta name='theme-color' content={} />
           */}
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+          <link rel="icon" href="/favicon.ico" />
           {Head}
         </Head>
         <body>

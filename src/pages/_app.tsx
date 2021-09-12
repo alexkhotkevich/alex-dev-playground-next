@@ -1,14 +1,15 @@
-import 'styles/globals.css'
+// import 'styles/globals.css'
 import type { AppProps } from 'next/app'
 import { withHydrate } from 'effector-next'
 import { useEffect } from 'react'
 import Head from 'next/head'
 import { ThemeProvider } from '@material-ui/styles'
 import { useStore } from 'effector-react'
-import { useMediaQuery } from '@material-ui/core'
+import { CssBaseline, useMediaQuery } from '@material-ui/core'
 import { useLocalStorage } from 'hooks'
 import { $theme, setTheme } from 'models/gui'
-import { MuiDarkTheme, MuiLightTheme } from 'styles'
+import { dark, light } from 'theme'
+import { Content, LeftMenu, TopAppBar } from 'components'
 
 const enhance = withHydrate()
 
@@ -38,11 +39,16 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>MyApp</title>
+        <title>Alex Dev Playground</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
-      <ThemeProvider theme={theme === 'dark' ? MuiDarkTheme : MuiLightTheme}>
-        <Component {...pageProps} />
+      <ThemeProvider theme={theme === 'dark' ? dark : light}>
+        <CssBaseline />
+        <TopAppBar />
+        <LeftMenu />
+        <Content>
+          <Component {...pageProps} />
+        </Content>
       </ThemeProvider>
     </>
   )
